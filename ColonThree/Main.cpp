@@ -1,12 +1,11 @@
 #include <iostream>
 #include "limSimple/Window.h"
 
+/*
+	DATASET TEST
+	Attempting to establish a method for trimming / compressing the images in the dataset such that they can all be handled by the GAN
+*/
+
 int main() {
-	Window myWindow("test", 400, 400);
-	while (!myWindow.shouldClose()) { 
-		std::cout << "window open " << std::endl;
-		myWindow.pollOnce();
-	}
-	std::cout << "closing" << std::endl;
 	return 1;
 }
