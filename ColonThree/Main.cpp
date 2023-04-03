@@ -7,20 +7,23 @@
 	Attempting to establish a method for trimming / compressing the images in the dataset such that they can all be handled by the GAN
 */
 
-int main() {
-	std::cout << "../archive" << std::endl;
-	std::vector<std::string> paths = getAvailableDirectories("../archive/*");
-	std::vector<std::string> paths2;
-	int count = 0;
-	for (int i = 0; i < paths.size(); i++) {
-		std::cout << "\t>" << paths[i] << std::endl;
-		paths2 = getAvailableDirectories("../archive/" + paths[i] + "/*");
-		for (int j = 0; j < paths2.size(); j++) {
-			// std::cout << "\t\t>" << paths2[j] << std::endl;
-			if (paths2[j][paths2[j].length() - 1] != 'b') { count += 1; }
-			else { std::cout << "\t\t> " << paths2[j] << " not counted" << std::endl; }
+static void displayFullDataset() {
+	std::vector<std::string> filePaths = datasetHandle::getJpgPaths();
+	Window catDisplay(":3", 400, 400);
+	int index = 0;
+	double bound = 0;
+	while (!catDisplay.shouldClose() && index < filePaths.size()) {
+		catDisplay.displayImage(filePaths[index++]);
+		catDisplay.pollOnce();
+		if ((float)index / (float)filePaths.size() > bound + 0.1f) {
+			bound = (float)index / (float)filePaths.size();
+			std::cout << bound * 100 << "%" << std::endl;
 		}
 	}
-	std::cout << ".jpg files: " << count << std::endl;
+	if ((float)index / (float)filePaths.size() > 0.999) { std::cout << "100%" << std::endl; }
+}
+
+int main() { 
+	// displayFullDataset();
 	return 1;
 }
