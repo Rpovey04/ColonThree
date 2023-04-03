@@ -1,6 +1,6 @@
 #include <iostream>
 #include "limSimple/Window.h"
-#include "datasetHandling/pathLoader.h"
+#include "datasetHandling/DatasetHandle.h"
 
 /*
 	DATASET TEST
@@ -8,7 +8,8 @@
 */
 
 static void displayFullDataset() {
-	std::vector<std::string> filePaths = datasetHandle::getJpgPaths();
+	DatasetHandle::setPathToArchive("../archive");
+	std::vector<std::string> filePaths = DatasetHandle::getJpgPaths();
 	Window catDisplay(":3", 400, 400);
 	int index = 0;
 	double bound = 0;
@@ -24,6 +25,6 @@ static void displayFullDataset() {
 }
 
 int main() { 
-	// displayFullDataset();
+	displayFullDataset();
 	return 1;
 }
