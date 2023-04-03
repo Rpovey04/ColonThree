@@ -1,5 +1,5 @@
 #include "Buffer.h"
-#include "src/stb_image/stb_image.h"
+#include "limSimple/stb_image/stb_image.h"
 
 class Texture {
 private:

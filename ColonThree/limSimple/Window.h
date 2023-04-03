@@ -1,4 +1,4 @@
-#include "src/Texture.h"
+#include "limSimple/Texture.h"
 #include "GLFW/glfw3.h"
 
 class Window {
